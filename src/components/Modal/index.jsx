@@ -10,6 +10,11 @@ import {
   Text,
   Button2Styled,
   Button1Styled,
+  TextGanho,
+  DivGanho,
+  ButtonEnd,
+  DivPerder,
+  TextPerder,
   DivStudentsModalStyled,
 } from "./styled";
 import { useState } from "react";
@@ -41,10 +46,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 
 const ModalStyled = ({ ele, index }) => {
-  const [viewForm, setViewForm] = useState(false);
-  const [viewAdd, setViewAdd] = useState(true);
+  const [viewForm, setViewForm] = useState(true);
+  const [viewAdd, setViewAdd] = useState(false);
   const [viewSub, setViewSub] = useState(false);
   const [nameSubmitForm, setNameSubmitForm] = useState("");
+
+  const [ganhoInPerder, setGanhoInPerder] = useState(0);
 
   const [open, setOpen] = useState(false);
   const classes = useStyles();
@@ -60,7 +67,10 @@ const ModalStyled = ({ ele, index }) => {
   };
 
   const schema = yup.object().shape({
-    number: yup.number("Apenas numeros").required("Campo obrigatório"),
+    number: yup
+      .number()
+      .typeError("Apenas numeros")
+      .required("Campo obrigatório"),
   });
 
   const { register, handleSubmit, errors, reset } = useForm({
@@ -68,6 +78,7 @@ const ModalStyled = ({ ele, index }) => {
   });
 
   const dataFormAdd = (data, nameForm) => {
+    setGanhoInPerder(data.number);
     reset();
 
     if (ele.house === "Slytherin") {
@@ -138,7 +149,13 @@ const ModalStyled = ({ ele, index }) => {
       <Modal open={open} onClose={handleClose}>
         <div className={classes.paper}>
           <DivModalStyled>
-            <ImageStudents src={ele.image}></ImageStudents>
+            <ImageStudents
+              style={{
+                backgroundImage: `url(${ele.image})`,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+              }}
+            ></ImageStudents>
           </DivModalStyled>
           <ContentModalStyled>
             <DivLogoInSchool>
@@ -179,16 +196,16 @@ const ModalStyled = ({ ele, index }) => {
               </form>
             )}
             {viewAdd && (
-              <div>
-                <h2>Ganho</h2>
-                <button onClick={viewFormInputOne}>Confirmar</button>
-              </div>
+              <DivGanho>
+                <TextGanho>{`+ ${ganhoInPerder}`}</TextGanho>
+                <ButtonEnd onClick={viewFormInputOne}>Confirmar</ButtonEnd>
+              </DivGanho>
             )}
             {viewSub && (
-              <div>
-                <h2>Perder</h2>
-                <button onClick={viewFormInputTwo}>Confirmar</button>
-              </div>
+              <DivPerder>
+                <TextPerder>{`- ${ganhoInPerder}`}</TextPerder>
+                <ButtonEnd onClick={viewFormInputTwo}>Confirmar</ButtonEnd>
+              </DivPerder>
             )}
           </ContentModalStyled>
         </div>

@@ -6,6 +6,37 @@ export const ImageModal = styled.img`
   width: 49px;
 `;
 
+export const ButtonEnd = styled.button`
+  background: #6994d5;
+  border: none;
+  width: 200px;
+  height: 50px;
+  color: #fff;
+  font-size: 1.6rem;
+`;
+
+export const DivPerder = styled.div`
+  text-align: center;
+`;
+
+export const TextPerder = styled.h2`
+  color: #f8a388;
+  text-align: center;
+  font-size: 56px;
+  margin: 11px 0;
+`;
+
+export const DivGanho = styled.div`
+  text-align: center;
+`;
+
+export const TextGanho = styled.h2`
+  color: #65e1cb;
+  text-align: center;
+  font-size: 56px;
+  margin: 11px 0;
+`;
+
 export const DivButtonModalStyled = styled.div`
   display: flex;
   justify-content: space-between;
@@ -14,6 +45,10 @@ export const DivButtonModalStyled = styled.div`
 `;
 export const DivModalStyled = styled.div`
   width: 45%;
+
+  @media (max-width: 805px) {
+    display: none;
+  }
 `;
 export const ContentModalStyled = styled.div`
   width: 55%;
@@ -36,7 +71,7 @@ export const Text = styled.p`
   font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 72px;
+  font-size: 44px;
   line-height: 84px;
   margin: 8px 0;
   letter-spacing: -0.02em;
@@ -49,7 +84,7 @@ export const DivLogoInSchool = styled.div`
   align-items: center;
 `;
 
-export const ImageStudents = styled.img`
+export const ImageStudents = styled.div`
   width: 276px;
   height: 376px;
 `;
@@ -66,6 +101,15 @@ export const useStyles = makeStyles((theme) => ({
     background: "#E5EDF2",
     padding: "20px",
     outline: "none",
+    [theme.breakpoints.down("sm")]: {
+      top: "15%",
+      left: "10%",
+    },
+    [theme.breakpoints.down("xs")]: {
+      top: "15%",
+      left: "3%",
+      width: "344px",
+    },
   },
   input: {
     border: "1px solid #3361a4",

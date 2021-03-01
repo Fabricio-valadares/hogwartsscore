@@ -11,6 +11,10 @@ export const DivStyled = styled.div`
   margin: 30px 0;
   background: #e5edf2;
   padding: 45px;
+
+  @media (max-width: 600px) {
+    padding: 18px;
+  }
 `;
 export const DivTitleStyled = styled.div`
   height: 71px;
@@ -76,6 +80,11 @@ export const NameStyled = styled.p`
   line-height: 42px;
   letter-spacing: -0.02em;
   color: #5777a8;
+
+  @media (max-width: 600px) {
+    font-size: 23px;
+    line-height: 30px;
+  }
 `;
 export const HouseStyled = styled.p`
   font-family: "Roboto", sans-serif;
@@ -85,4 +94,8 @@ export const HouseStyled = styled.p`
   line-height: 42px;
   letter-spacing: -0.02em;
   color: #5777a8;
+
+  @media (max-width: 600px) {
+    font-size: 25px;
+  }
 `;

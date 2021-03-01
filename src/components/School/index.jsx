@@ -56,7 +56,10 @@ const School = () => {
     <ContainerStyled>
       {palceHouse.map((ele, index) => (
         <DivSchoolStyled key={index}>
-          <TextStyled>{ele.house}</TextStyled>
+          <TextStyled>
+            {`#${index + 1} `}
+            {ele.house}
+          </TextStyled>
           <ImageStyled src={ele.image}></ImageStyled>
           <ScoreStyled>{ele.score}</ScoreStyled>
         </DivSchoolStyled>

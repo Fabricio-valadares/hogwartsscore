@@ -5,6 +5,10 @@ export const HeaderStyled = styled.div`
   display: flex;
   align-items: flex-start;
   height: 202px;
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `;
 export const DivStyled = styled.div`
   background-color: #3361a4;
@@ -26,4 +30,8 @@ export const TextStyled = styled.p`
   font-size: 40px;
   line-height: 56px;
   color: #ffffff;
+
+  @media (max-width: 600px) {
+    font-size: 30px;
+  }
 `;
